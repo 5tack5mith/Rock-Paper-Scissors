@@ -8,7 +8,7 @@ const UserScore = document.querySelector("#user-score");
 const CompScore = document.querySelector("#comp-score");
 
 const computerChoice = ()=>{
-    const options =["rock","paper","scissors"];
+    const options =["Rock","Paper","Scissors"];
     const randomIndex = Math.floor(Math.random()*3);
     return options[randomIndex];
 }
@@ -22,16 +22,16 @@ const playGame = (userChoice)=>{
     }
     else{
         let userWin=true;
-        if(userChoice==="rock"){
-            userWin = compChoice ==="paper" ? false:true;
+        if(userChoice==="Rock"){
+            userWin = compChoice ==="Paper" ? false:true;
         }
         else if(userChoice==="paper"){
-            userWin = compChoice ==="scissors" ? false:true;
+            userWin = compChoice ==="Scissors" ? false:true;
         }
         else {
-            userWin = compChoice ==="rock" ? false : true;
+            userWin = compChoice ==="Rock" ? false : true;
         }
-        ShowWinner(userWin);
+        ShowWinner(userWin,userChoice,compChoice);
     }
 }
 
@@ -40,16 +40,16 @@ const drawGame = ()=>{
     result.innerText="Game is drawn.";
 }
 
-const ShowWinner = (userWin)=>{
+const ShowWinner = (userWin,userChoice,compChoice)=>{
     if(userWin){
         console.log("You Win !");
-        result.innerText="You Win !";
+        result.innerText=`${userChoice} beats ${compChoice}, You Win !`;
         user++;
         UserScore.innerText=user;
     }
     else{
         console.log("You Lose !");
-        result.innerText="You Lose !";
+        result.innerText=`${compChoice} beats ${userChoice}, You Lose !`;
         computer++;
         CompScore.innerText=computer;
     }
